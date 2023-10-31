@@ -39,4 +39,4 @@ In this enterprise, we utilize several core scripts to achieve the goals of our 
    - The `utils` directory houses various utility scripts that perform essential calculations for the project.
    - Included in this directory are scripts for computing values such as Solar Zenith Angle (SZA), Solar Azimuth Angle (SAA), and Clear Sky Model (CSM) output.
 
-Please note that the detailed implementation of creating `cf` and `cc` from the raw GSI images can be found in [this](https://github.com/pyaada/sky-cloud-fraction.git) GitHub repository.
+Please note that the detailed implementation of creating $\texttt{cf}$ and $\texttt{cc}$ from the raw GSI images can be found in [this](https://github.com/pyaada/sky-cloud-fraction.git) GitHub repository.
