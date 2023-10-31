@@ -5,7 +5,7 @@ This component is designed to reduce the ground-based sky imager (GSI) images. I
 ## Purpose
 In the absence of suitable training data to directly achieve this transformation, our approach involves using the $\texttt{civ}$ vector to construct a model for estimating global horizontal irradiance (GHI) in subsequent processing steps. This model takes into account key environmental parameters such as solar zenith angle (SZA), solar azimuth angle (SAA), and the clear sky model (CSM) output. The overall architecture is depicted in the figure below.
 
-[![GSI Reducer Architecture](/imgs/GSIreducer.png)](/imgs/GSIreducer.pdf)
+[![GSI Reducer Architecture](/GSI%20Encode/imgs/GSIreducer.png)](/GSI%20Encode/imgs/GSIreducer.pdf)
 
 ## Core Scripts
 
