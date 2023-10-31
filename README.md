@@ -4,6 +4,8 @@ With the spirit of reproducible research, this repository contains all the codes
 
 > M. Jain, P. Yadav and S. Dev, "Holistic and Lightweight Approach for Solar Irradiance Forecasting," in IEEE Transactions on Geoscience and Remote Sensing, 2023 [UNDER REVIEW].
 
+---
+
 This component is designed to reduce the ground-based sky imager (GSI) images. It accomplishes this by combining the cloud fraction vector ($\texttt{cf}$) obtained from the "Cloud Image Segmentation" component and the cloud classification label vector ($\texttt{cc}$) obtained from the "Cloud Image Classification" component. The result is a composite score known as the cloud impact vector ($\texttt{civ}$).
 
 ## Purpose
