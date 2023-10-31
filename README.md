@@ -6,12 +6,13 @@ With the spirit of reproducible research, this repository contains all the codes
 
 ---
 
-This component is designed to reduce the ground-based sky imager (GSI) images. It accomplishes this by combining the cloud fraction vector ($\texttt{cf}$) obtained from the "Cloud Image Segmentation" component and the cloud classification label vector ($\texttt{cc}$) obtained from the "Cloud Image Classification" component. The result is a composite score known as the cloud impact vector ($\texttt{civ}$).
+This work presents a novel framework for GHI forecasting that leverages meteorological variables, historical GHI data, GSI images, and satellite-derived cloud masks. By condensing image data into lower-dimensional feature vectors, this framework accommodates for longer historical contexts for forecasting GHI over a $60$-minute horizon. The complete framework is outlined in the figure below.
+[![GSI Forecasting Framework](/imgs/GSIreducer.png)](/imgs/GSIreducer.pdf)
 
 ## Purpose
 In the absence of suitable training data to directly achieve this transformation, our approach involves using the $\texttt{civ}$ vector to construct a model for estimating global horizontal irradiance (GHI) in subsequent processing steps. This model takes into account key environmental parameters such as solar zenith angle (SZA), solar azimuth angle (SAA), and the clear sky model (CSM) output. The overall architecture is depicted in the figure below.
 
-[![GSI Reducer Architecture](/GSI%20Encode/imgs/GSIreducer.png)](/GSI%20Encode/imgs/GSIreducer.pdf)
+
 
 ## Core Scripts
 
