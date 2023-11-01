@@ -15,12 +15,12 @@ This work introduces an innovative framework for global horizontal irradiance (G
 ## Key Components of the Framework
 
 1. **Identifying Relevant Meteorological Variables**
-    - We employed diverse feature selection strategies to pinpoint the most critical meteorological variables <a href="#ref2">[2]</a>.
+    - We employed diverse feature selection strategies to pinpoint the most critical meteorological variables <a href="#ref1">[1]</a>.
     - The corresponding code for this process is accessible in the directory named `1_Identify Met Vars`.
 
 2. **Optimizing the Clear Sky Model (CSM)**
     - With a myriad of CSMs available in the literature, our objective was to identify the optimal one for a specific geographical location.
-    - Recognizing that the optimality of CSM models can vary with time, we adopted a month-wise approach to select the best models <a href="#ref1">[1]</a>.
+    - Recognizing that the optimality of CSM models can vary with time, we adopted a month-wise approach to select the best models <a href="#ref2">[2]</a>.
     - You can find the code related to this optimization in the `2_Identify CSM` directory.
 
 3. **Sky/Cloud Image Segmentation**
@@ -50,8 +50,8 @@ This work introduces an innovative framework for global horizontal irradiance (G
 
 ## References & Acknowledgement
 
-1. <a id="ref1"></a> [M. Jain, C. Kumari and S. Dev, "Identifying the Best Clear Sky Model for the Delhi-NCR Region," *2022 IEEE International Geoscience and Remote Sensing Symposium (IGARSS), Kuala Lumpur, Malaysia*, 2022, pp. 7926-7929.](https://doi.org/10.1109/IGARSS46834.2022.9883753)
-2. <a id="ref2"></a> [M. Jain, N. Jain, N. Sinha and S. Dev, "A Systematic Spatio-Temporal Analysis of Relevant Meteorological Variables for Solar Irradiance Forecasting," *2023 IEEE International Geoscience and Remote Sensing Symposium (IGARSS), Pasadena, CA, USA*, 2023, pp. 1696-1699.](https://doi.org/10.1109/IGARSS52108.2023.10282834)
+1. <a id="ref1"></a> [M. Jain, N. Jain, N. Sinha and S. Dev, "A Systematic Spatio-Temporal Analysis of Relevant Meteorological Variables for Solar Irradiance Forecasting," *2023 IEEE International Geoscience and Remote Sensing Symposium (IGARSS), Pasadena, CA, USA*, 2023, pp. 1696-1699.](https://doi.org/10.1109/IGARSS52108.2023.10282834)
+2. <a id="ref2"></a> [M. Jain, C. Kumari and S. Dev, "Identifying the Best Clear Sky Model for the Delhi-NCR Region," *2022 IEEE International Geoscience and Remote Sensing Symposium (IGARSS), Kuala Lumpur, Malaysia*, 2022, pp. 7926-7929.](https://doi.org/10.1109/IGARSS46834.2022.9883753)
 3. <a id="ref3"></a> [A. Kumar, M. Jain and S. Dev, "Generative Augmentation for Sky/Cloud Image Segmentation," *2023 IEEE International Geoscience and Remote Sensing Symposium (IGARSS), Pasadena, CA, USA*, 2023, pp. 7288-7291.](https://doi.org/10.1109/IGARSS52108.2023.10283005)
 4. <a id="ref4"></a> [M. Jain, N. Jain, Y. H. Lee, S. Winkler and S. Dev, "Transfer Learning for Cloud Image Classification," *2023 IEEE International Geoscience and Remote Sensing Symposium (IGARSS), Pasadena, CA, USA*, 2023, pp. 6005-6008.](https://doi.org/10.1109/IGARSS52108.2023.10281791)
 5. <a id="ref5"></a> [M. Jain, C. Kumari, A. Kumar and S. Dev, "Using Meteosat Cloud Masks for Solar Irradiance Nowcasting," *2023 IEEE International Geoscience and Remote Sensing Symposium (IGARSS), Pasadena, CA, USA*, 2023, pp. 3938-3941.](https://doi.org/10.1109/IGARSS52108.2023.10283418)
