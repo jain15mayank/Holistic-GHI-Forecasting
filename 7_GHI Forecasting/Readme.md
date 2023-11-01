@@ -1,11 +1,9 @@
 # GHI Forecasting Model
+This component aims to utilize the encoded representation, of satellite-derived cloud masks and the GSI cloud images, as features alongside the relevant meteorological variables, historical GHI data, SZA, SAA, and CSM values to forecast GHI over a $60$- minute horizon.
 
+LSTM-based model (shown in figure below) and PatchTST <a href="#ref1">[1]</a> were implemented to make GHI forecasts.
 
-
-## Purpose
-In the absence of suitable training data to directly achieve this transformation, our approach involves using the $\texttt{civ}$ vector to construct a model for estimating global horizontal irradiance (GHI) in subsequent processing steps. This model takes into account key environmental parameters such as solar zenith angle (SZA), solar azimuth angle (SAA), and the clear sky model (CSM) output. The overall architecture is depicted in the figure below.
-
-[![GSI Reducer Architecture](/imgs/GSIreducer.png)](/imgs/GSIreducer.pdf)
+[![LSTM-based GHI Forecasting Model](../imgs/TSforecastingModels-LSTM.png)](../imgs/TSforecastingModels-LSTM.pdf)
 
 ## Core Scripts
 
@@ -39,4 +37,6 @@ In this enterprise, we utilize several core scripts to achieve the goals of our 
    - The `utils` directory houses various utility scripts that perform essential calculations for the project.
    - Included in this directory are scripts for computing values such as Solar Zenith Angle (SZA), Solar Azimuth Angle (SAA), and Clear Sky Model (CSM) output.
 
-Please note that the detailed implementation of creating $\texttt{cf}$ and $\texttt{cc}$ from the raw GSI images can be found in [this](https://github.com/pyaada/sky-cloud-fraction.git) GitHub repository.
+## References & Acknowledgement
+
+1. <a id="ref1"></a> [Y. Nie, N. H. Nguyen, P. Sinthong and J. Kalagnanam, "A Time Series is Worth 64 Words: Long-term Forecasting with Transformers," *The Eleventh International Conference on Learning Representations (ICLR), Kigali, Rwanda*, 2023](https://openreview.net/forum?id=Jbdc0vTOcol)
