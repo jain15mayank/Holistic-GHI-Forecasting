@@ -17,29 +17,36 @@ In this enterprise, we utilize several core scripts to achieve the goals of our 
    - Main code file responsible for training the model.
    - Specifies the initialization arguments required for model training.
 
-2. **`trainFromFeatures.py`**:
-   - Contains the training loop that supports both single and multi-GPU execution.
+2. **`train.py`**:
+   - Contains the training loop for the LSTM-based model that supports both single and multi-GPU execution.
+
+3. **`trainPatchTS.py`**:
+   - Contains the training loop for the PatchTST model that supports both single and multi-GPU execution.
    
-3. **`evaluate.py`**:
-   - This script plays a critical role in assessing the model's performance.
-   - It calculates and provides the following evaluation metrics:
+4. **`evaluate.py`**:
+   - This script plays a critical role in assessing the LSTM-based model's performance.
+   - It calculates and provides the following evaluation metrics for every $10$-minute point forecasts (upto $60$ minutes) and for the continuous $60$-minute horizon:
      - Root Mean Square Error (RMSE)
      - Mean Absolute Error (MAE)
      - Coefficient of Determination ($R^2$)
-   - Additionally, it generates GHI prediction curves for a specific date, aiding in the visualization of model predictions.
 
-4. **`createReducedData.py`**:
-   - This script takes advantage of the trained model to create the cloud impact vector ($\texttt{cvi}$) for a given year. It stores these vectors as Numpy objects along with their associated timestamps, facilitating further analysis and downstream applications.
+5. **`evaluatePatchTS.py`**:
+   - This script plays a critical role in assessing the PatchTST model's performance.
+   - It calculates and provides the following evaluation metrics for every $10$-minute point forecasts (upto $60$ minutes) and for the continuous $60$-minute horizon:
+     - Root Mean Square Error (RMSE)
+     - Mean Absolute Error (MAE)
+     - Coefficient of Determination ($R^2$)
 
-4. **`models/sirtaGSIGHImodel.py`**:
-   - This script contains the PyTorch model, defining the architecture used in the project.
+6. **`datasets/createFinalData.py`**:
+   - This script combines all the data from numerous components and collate them to create year-wise data files which will be accessed by the `datasets/TSforecastingDatasets.py` file.
 
-5. **`datasets/sirtaGSIGHI.py`**:
+7. **`datasets/TSforecastingDatasets.py`**:
    - It's responsible for creating the PyTorch dataset required for training and evaluation.
 
-6. **`utils/*`**:
-   - The `utils` directory houses various utility scripts that perform essential calculations for the project.
-   - Included in this directory are scripts for computing values such as Solar Zenith Angle (SZA), Solar Azimuth Angle (SAA), and Clear Sky Model (CSM) output.
+8. **`models/TSforecastingModels.py`**:
+   - This script contains the PyTorch model, defining the architecture used in the project.
+   - PatchTST code is reproduced from [this](https://github.com/yuqinie98/PatchTST) original GitHub repository <a href="#ref1">[1]</a>.
+
 
 ## References & Acknowledgement
 
