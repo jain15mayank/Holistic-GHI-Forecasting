@@ -8,7 +8,7 @@ This component aims to encode the satellite-derived cloud masks by training an a
 
 <p align="center">
    <a href="../imgs/satelliteAutoencoder.pdf">
-      <img src="../imgs/satelliteAutoencoder.png" alt="LSTM-based GHI Forecasting Model" width="400">
+      <img src="../imgs/satelliteAutoencoder.png" alt="LSTM-based GHI Forecasting Model" width="600">
    </a>
 </p>
 
