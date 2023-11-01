@@ -1,4 +1,4 @@
-# Holistic and Lightweight Approach for Solar Irradiance (GHI) Forecasting
+# Holistic and Lightweight Approach for Solar Irradiance Forecasting
 
 With the spirit of reproducible research, this repository contains all the codes required to produce the results in the manuscript:
 
@@ -6,44 +6,43 @@ With the spirit of reproducible research, this repository contains all the codes
 
 ---
 
-This work presents a novel framework for GHI forecasting that leverages meteorological variables, historical GHI data, GSI images, and satellite-derived cloud masks. By condensing image data into lower-dimensional feature vectors, this framework accommodates for longer historical contexts for forecasting GHI over a $60$-minute horizon. The complete framework is outlined in the figure below.
+## A Novel Framework for GHI Forecasting
+
+This work introduces an innovative framework for global horizontal irradiance (GHI) forecasting. It leverages a combination of meteorological variables, historical GHI data, ground-based sky imager (GSI) images, and satellite-derived cloud masks. One of its key innovations lies in transforming complex image data into lower-dimensional feature vectors, enabling it to provide longer historical contexts for GHI forecasts, spanning a 60-minute horizon. The proposed framework is visually outlined below:
+
 [![GSI Forecasting Framework](./imgs/framework.png)](./imgs/framework.pdf)
 
-## Purpose
-In the absence of suitable training data to directly achieve this transformation, our approach involves using the $\texttt{civ}$ vector to construct a model for estimating global horizontal irradiance (GHI) in subsequent processing steps. This model takes into account key environmental parameters such as solar zenith angle (SZA), solar azimuth angle (SAA), and the clear sky model (CSM) output. The overall architecture is depicted in the figure below.
+## Key Components of the Framework
 
+1. **Identifying Relevant Meteorological Variables**
 
+    - We employed diverse feature selection strategies to pinpoint the most critical meteorological variables.
+    - The corresponding code for this process is accessible in the directory named `Identify Met Vars`.
 
-## Core Scripts
+2. **Optimizing the Clear Sky Model (CSM)**
 
-In this enterprise, we utilize several core scripts to achieve the goals of our project. Here's a brief description of each of these essential scripts:
+    - With a myriad of CSMs available in the literature, our objective was to identify the optimal one for a specific geographical location.
+    - Recognizing that the optimality of CSM models can vary with time, we adopted a month-wise approach to select the best models.
+    - You can find the code related to this optimization in the `Identify CSM` directory.
 
-1. **`script.py`**:
-   - Main code file responsible for training the model.
-   - Specifies the initialization arguments required for model training.
+3. **Sky/Cloud Image Segmentation**
 
-2. **`trainFromFeatures.py`**:
-   - Contains the training loop that supports both single and multi-GPU execution.
-   
-3. **`evaluate.py`**:
-   - This script plays a critical role in assessing the model's performance.
-   - It calculates and provides the following evaluation metrics:
-     - Root Mean Square Error (RMSE)
-     - Mean Absolute Error (MAE)
-     - Coefficient of Determination ($R^2$)
-   - Additionally, it generates GHI prediction curves for a specific date, aiding in the visualization of model predictions.
+    - In many cases, annotated sky/cloud images are not readily available for training the segmentation model for a given location. To address this, we applied a generative augmentation strategy to enhance the model's generalizability when dealing with out-of-distribution datasets.
+    - Once trained, the segmentation model was utilized to segment sky/cloud images for the specific location. These segmented images were then corrected for fisheye distortion, and cloud fraction values were calculated for each grid element after dividing the undistorted image into a $4\times4$ grid.
+    - Detailed code for this process is located in the `Cloud Segmentation` directory.
 
-4. **`createReducedData.py`**:
-   - This script takes advantage of the trained model to create the cloud impact vector ($\texttt{cvi}$) for a given year. It stores these vectors as Numpy objects along with their associated timestamps, facilitating further analysis and downstream applications.
+4. **Sky/Cloud Image Classification**
 
-4. **`models/sirtaGSIGHImodel.py`**:
-   - This script contains the PyTorch model, defining the architecture used in the project.
+    - Transfer learning techniques were employed to perform sky/cloud image classification using the SWIMCAT dataset.
+    - Similar to the segmentation component, the undistorted version of the original image was divided into a $4\times4$ grid, with each element classified into one of the five predefined classes.
+    - Code relevant to this classification task can be found in the `Cloud Classification` directory.
 
-5. **`datasets/sirtaGSIGHI.py`**:
-   - It's responsible for creating the PyTorch dataset required for training and evaluation.
+5. **Encoding GSI Images**
+    - Encoded feature vector or cloud impact vector ($\texttt{civ}$) is constructed from the cloud fraction and cloud classification vectors.
+    - Solar zenith angle (SZA) and solar azimuth angle (SAA) were also considered in this step to righteously estimate the $\texttt{civ}$.
+    - However, in the absence of suitable training data to directly achieve this transformation, a neural network architecture is designed to estimate GHI instead - which was then trained to extract $\texttt{civ}$ from the intermediate layer.
+    - Details about this component and the code relevant to this task can be found in the `GSI Encode` directory.
 
-6. **`utils/*`**:
-   - The `utils` directory houses various utility scripts that perform essential calculations for the project.
-   - Included in this directory are scripts for computing values such as Solar Zenith Angle (SZA), Solar Azimuth Angle (SAA), and Clear Sky Model (CSM) output.
-
-Please note that the detailed implementation of creating $\texttt{cf}$ and $\texttt{cc}$ from the raw GSI images can be found in [this](https://github.com/pyaada/sky-cloud-fraction.git) GitHub repository.
+6. **GHI Forecasting Model**
+    - Finally, the relevant meteorological features, encoded satellite-derived cloud masks, encoded GSI images, historical GHI, SZA, SAA, and CSM values were used as features to forecast GHI over the next $60$-minute interval in this component.
+    - More details and code relevant to this component can be found in the `GHI Forecasting` directory.
