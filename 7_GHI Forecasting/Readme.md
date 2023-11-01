@@ -3,7 +3,10 @@ This component aims to utilize the encoded representation, of satellite-derived 
 
 LSTM-based model (shown in figure below) and PatchTST <a href="#ref1">[1]</a> were implemented to make GHI forecasts.
 
-[![LSTM-based GHI Forecasting Model](../imgs/TSforecastingModels-LSTM.png)](../imgs/TSforecastingModels-LSTM.pdf)
+<a href="../imgs/TSforecastingModels-LSTM.pdf">
+  <img src="../imgs/TSforecastingModels-LSTM.png" alt="LSTM-based GHI Forecasting Model" width="400">
+</a>
+
 
 ## Core Scripts
 
